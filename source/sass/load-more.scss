@@ -1,0 +1,38 @@
+.load-more {
+  width: 190px;
+  margin: 0 auto;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.load-more__info {
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+
+.load-more__scale {
+  position: relative;
+  margin-bottom: 30px;
+  height: 2px;
+  background-color: $bg-gray;
+}
+
+.load-more__bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 2px;
+  background-color: $black;
+}
+
+.load-more__btn {
+  width: 100%;
+  padding: 25px;
+}
+
+@media(min-width: $min-tablet) {
+  .load-more {
+    width: 210px;
+  }
+}

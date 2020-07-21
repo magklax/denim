@@ -1,0 +1,93 @@
+input[name="color"] + label,
+input[name="collection"] + label,
+input[name="size"] + label {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+input[name="color"] + label {
+  width: 22px;
+  height: 22px;
+}
+
+input[name="color"] + label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+input[name="color"]:focus + label::after,
+input[name="color"]:hover + label::after,
+input[name="color"]:checked + label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid $gray;
+}
+
+input[name="color"]:focus + label::after,
+input[name="color"]:hover + label::after {
+  opacity: .5;
+}
+
+input[name="color"]:checked + label::after {
+  opacity: 1;
+}
+
+input[name="collection"] + label,
+input[name="size"] + label {
+  opacity: .5;
+}
+
+input[name="collection"]:focus + label,
+input[name="collection"]:hover + label,
+input[name="size"]:focus + label,
+input[name="size"]:hover + label {
+  opacity: .7;
+}
+
+input[name="collection"]:checked + label,
+input[name="size"]:checked + label {
+  opacity: 1;
+}
+
+#color_1:checked + label::before,
+#color_1:not(:checked) + label::before {
+   background-color: #B0C3C7;
+}
+
+#color_2:checked + label::before,
+#color_2:not(:checked) + label::before {
+   background-color: #3B6392;
+}
+
+#color_3:checked + label::before,
+#color_3:not(:checked) + label::before {
+   background-color: #BFC3C8;
+}
+
+#color_4:checked + label::before,
+#color_4:not(:checked) + label::before {
+   background-color: #2D2E2E;
+}
+
+#color_5:checked + label::before,
+#color_5:not(:checked) + label::before {
+   background-color: #ECECEC;
+}
+
+#color_6:checked + label::before,
+#color_6:not(:checked) + label::before {
+   background-color: #4193DA;
+}

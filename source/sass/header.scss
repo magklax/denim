@@ -1,0 +1,12 @@
+.header__logo {
+  text-align: center;
+}
+
+.nav__item {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.nav__item:not(:last-child) {
+  padding-right: 20px;
+}

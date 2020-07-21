@@ -1,0 +1,43 @@
+.range__scale {
+  width: 100%;
+  height: 2px;
+  background-color: $bg-gray;
+}
+
+.range__bar {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  right: 25%;
+  transform: translateY(-50%);
+  height: 2px;
+  background-color: $black;
+}
+
+.range__toggle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-color: $black;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &--min {
+    left: 5%;
+  }
+
+  &--max {
+    left: 75%;
+  }
+
+  .range__value {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -25px;
+    font-size: 14px;
+    font-weight: 800;
+  }
+}
