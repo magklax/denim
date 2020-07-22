@@ -8,61 +8,56 @@
   const minPriceValue = minPrice.querySelector('.range__value');
   const maxPriceValue = maxPrice.querySelector('.range__value');
   const rangeBar = document.querySelector('.range__bar');
+
   let startCoordX;
-  let positionX;
+  let curCoordX;
 
-  const setMinPrice = function (coord) {
-    minPrice.style.left = coord + '%';
-    rangeBar.style.left = coord + '%';
-    minPriceValue.textContent = '$' + Math.floor(coord * 400 / 100);
-  };
-
-  const setMaxPrice = function (coord) {
-    maxPrice.style.left = coord + '%';
-    rangeBar.style.right = 100 - coord + '%';
-    maxPriceValue.textContent = '$' + Math.floor(coord * 400 / 100);
-  }
-
-  const onMouseMove = function (moveEvt) {
-    moveEvt.preventDefault();
-
-    let shift = moveEvt.clientX - startCoordX;
-    let left = (minPrice.offsetLeft + 30 + shift) / rangeScale.offsetWidth * 100;
-    let right = (maxPrice.offsetLeft - 30 + shift) / rangeScale.offsetWidth * 100;
-
-    startCoordX = moveEvt.clientX;
-
+  const setPrice = function (shift) {
     if (minPrice.classList.contains('active')) {
-      positionX = (minPrice.offsetLeft + shift) / rangeScale.offsetWidth * 100;
+      curCoordX = (minPrice.offsetLeft + shift) / rangeScale.offsetWidth * 100;
+      let right = (maxPrice.offsetLeft - 30 + shift) / rangeScale.offsetWidth * 100;
 
-      if (positionX < 0) {
-        positionX = 0;
+      if (curCoordX < 0) {
+        curCoordX = 0;
       }
 
-      if (positionX >= right) {
-        positionX = right;
+      if (curCoordX >= right) {
+        curCoordX = right;
       }
 
-      setMinPrice(positionX);
+      minPrice.style.left = curCoordX + '%';
+      rangeBar.style.left = curCoordX + '%';
+      minPriceValue.textContent = '$' + Math.floor(curCoordX * 400 / 100);
     }
 
     if (maxPrice.classList.contains('active')) {
-      positionX = (maxPrice.offsetLeft + shift) / rangeScale.offsetWidth * 100;
+      curCoordX = (maxPrice.offsetLeft + shift) / rangeScale.offsetWidth * 100;
+      let left = (minPrice.offsetLeft + 30 + shift) / rangeScale.offsetWidth * 100;
 
-      if (positionX > 100) {
-        positionX = 100;
+      if (curCoordX > 100) {
+        curCoordX = 100;
       }
 
-      if (positionX <= left) {
-        positionX = left;
+      if (curCoordX <= left) {
+        curCoordX = left;
       }
 
-      setMaxPrice(positionX);
+      maxPrice.style.left = curCoordX + '%';
+      rangeBar.style.right = 100 - curCoordX + '%';
+      maxPriceValue.textContent = '$' + Math.floor(curCoordX * 400 / 100);
     }
   };
 
-  var onMouseUp = function (upEvt) {
-    upEvt.preventDefault();
+
+  const onMouseMove = function (evt) {
+    evt.preventDefault();
+
+    setPrice(evt.clientX - startCoordX);
+    startCoordX = evt.clientX;
+  };
+
+  var onMouseUp = function (evt) {
+    evt.preventDefault();
 
     minPrice.classList.remove('active');
     maxPrice.classList.remove('active');
@@ -71,18 +66,52 @@
     document.removeEventListener('mouseup', onMouseUp);
   };
 
-  var onMouseDown = function (downEvt) {
-    downEvt.preventDefault();
+  var onMouseDown = function (evt) {
+    evt.preventDefault();
 
-    downEvt.target.classList.add('active');
+    evt.target.classList.add('active');
 
-    startCoordX = downEvt.clientX;
+    startCoordX = evt.clientX;
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   };
 
   range.addEventListener('mousedown', onMouseDown);
+
+  /* touch */
+
+
+
+  const onTouchMove = function (evt) {
+    evt.preventDefault();
+
+    setPrice(evt.changedTouches[0].clientX - startCoordX);
+    startCoordX = evt.changedTouches[0].clientX;
+  }
+
+  var onTouchEnd = function (evt) {
+    evt.preventDefault();
+
+    minPrice.classList.remove('active');
+    maxPrice.classList.remove('active');
+
+    document.removeEventListener('touchmove', onTouchMove)
+    document.removeEventListener('touchend', onTouchEnd);
+  };
+
+  var onTouchStart = function (evt) {
+    evt.preventDefault();
+
+    evt.target.classList.add('active');
+
+    startCoordX = evt.changedTouches[0].clientX;
+
+    document.addEventListener('touchmove', onTouchMove);
+    document.addEventListener('touchend', onTouchEnd);
+  };
+
+  range.addEventListener('touchstart', onTouchStart);
 
    /* clear filters */
 
@@ -110,4 +139,5 @@
       clearFilters();
     }
   });
+
 })();
