@@ -22,8 +22,6 @@ input[name="color"] + label::before {
   border-radius: 50%;
 }
 
-input[name="color"]:focus + label::after,
-input[name="color"]:hover + label::after,
 input[name="color"]:checked + label::after {
   content: "";
   position: absolute;
@@ -34,11 +32,6 @@ input[name="color"]:checked + label::after {
   height: 22px;
   border-radius: 50%;
   border: 1px solid $gray;
-}
-
-input[name="color"]:focus + label::after,
-input[name="color"]:hover + label::after {
-  opacity: .5;
 }
 
 input[name="color"]:checked + label::after {
