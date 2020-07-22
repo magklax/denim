@@ -12,6 +12,18 @@
   let startCoordX;
   let curCoordX;
 
+  const setMinPrice = function (value) {
+    minPrice.style.left = curCoordX + '%';
+    rangeBar.style.left = curCoordX + '%';
+    minPriceValue.textContent = '$' + Math.floor(curCoordX * 400 / 100);
+  };
+
+  const setMaxPrice = function (value) {
+    maxPrice.style.left = curCoordX + '%';
+    rangeBar.style.right = 100 - curCoordX + '%';
+    maxPriceValue.textContent = '$' + Math.floor(curCoordX * 400 / 100);
+  }
+
   const setPrice = function (shift) {
     if (minPrice.classList.contains('active')) {
       curCoordX = (minPrice.offsetLeft + shift) / rangeScale.offsetWidth * 100;
@@ -25,9 +37,7 @@
         curCoordX = right;
       }
 
-      minPrice.style.left = curCoordX + '%';
-      rangeBar.style.left = curCoordX + '%';
-      minPriceValue.textContent = '$' + Math.floor(curCoordX * 400 / 100);
+      setMinPrice(curCoordX);
     }
 
     if (maxPrice.classList.contains('active')) {
@@ -42,12 +52,9 @@
         curCoordX = left;
       }
 
-      maxPrice.style.left = curCoordX + '%';
-      rangeBar.style.right = 100 - curCoordX + '%';
-      maxPriceValue.textContent = '$' + Math.floor(curCoordX * 400 / 100);
+      setMaxPrice(curCoordX);
     }
   };
-
 
   const onMouseMove = function (evt) {
     evt.preventDefault();
@@ -80,8 +87,6 @@
   range.addEventListener('mousedown', onMouseDown);
 
   /* touch */
-
-
 
   const onTouchMove = function (evt) {
     evt.preventDefault();
