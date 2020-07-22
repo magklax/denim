@@ -13,15 +13,15 @@
   let curCoordX;
 
   const setMinPrice = function (value) {
-    minPrice.style.left = curCoordX + '%';
-    rangeBar.style.left = curCoordX + '%';
-    minPriceValue.textContent = '$' + Math.floor(curCoordX * 400 / 100);
+    minPrice.style.left = value + '%';
+    rangeBar.style.left = value + '%';
+    minPriceValue.textContent = '$' + Math.floor(value * 400 / 100);
   };
 
   const setMaxPrice = function (value) {
-    maxPrice.style.left = curCoordX + '%';
-    rangeBar.style.right = 100 - curCoordX + '%';
-    maxPriceValue.textContent = '$' + Math.floor(curCoordX * 400 / 100);
+    maxPrice.style.left = value + '%';
+    rangeBar.style.right = 100 - value + '%';
+    maxPriceValue.textContent = '$' + Math.floor(value * 400 / 100);
   }
 
   const setPrice = function (shift) {
