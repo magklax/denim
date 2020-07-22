@@ -12,10 +12,6 @@
   overflow: hidden;
 }
 
-figure {
-  margin: 0;
-}
-
 fieldset {
   border: none;
   margin: 0;
@@ -109,8 +105,8 @@ body {
 .view-all__btn {
   position: relative;
   display: block;
-  margin: 0 auto;
   padding: 4px;
+  text-align: center;
 
   &::after {
     content: "";
@@ -124,7 +120,6 @@ body {
     z-index: 99;
   }
 }
-
 
 @media(min-width: $min-tablet) {
   body {
