@@ -19,6 +19,10 @@
     display: none;
   }
 
+  &:not(:last-child) .breadcrumbs__link {
+    color: $gray;
+  }
+
   &:not(:last-child)::before {
    content: "/";
    position: absolute;
@@ -27,10 +31,6 @@
    transform: translateX(50%);
    color: $gray;
  }
-}
-
-.breadcrumbs__link--pale {
-  color: $gray;
 }
 
 @media(min-width: $min-tablet) {
