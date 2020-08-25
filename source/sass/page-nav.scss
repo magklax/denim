@@ -3,9 +3,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 4.9%;
+  padding: 10px 4.9%;
 }
-
 
 @media(max-width: $max-mobile) {
   .page-nav__overlay {
@@ -20,17 +19,6 @@
     background-color: $bg-gray;
     z-index: 99;
   }
-}
-
-.page-nav__item {
-  padding: 10px 0;
-}
-
-.page-header__logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .page-nav__btn {
@@ -49,10 +37,5 @@
   #open-menu-btn,
   #close-menu-btn {
     display: none;
-  }
-
-  .page-nav__item {
-    display: inline-block;
-    margin-right: 35px;
   }
 }

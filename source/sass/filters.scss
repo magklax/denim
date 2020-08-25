@@ -37,13 +37,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 12.5px 0;
 }
 
 .filters__item {
   position: relative;
-  padding-top: 10px;
-  padding-bottom: 10px;
 
   &::before {
     content: "";
@@ -58,7 +56,7 @@
 
 .filters__apply {
   margin: auto 0 25px;
-  padding: 20px;
+  padding: 12.5px;
 }
 
 @media(max-width: $max-mobile) {
@@ -78,11 +76,6 @@
     width: 32.5%;
   }
 
-  .filters__btn--border {
-    padding-top: 22.5px;
-    padding-bottom: 22.5px;
-  }
-
   .filters__form {
     position: absolute;
     padding: 0;
@@ -93,6 +86,8 @@
   .filters__header {
     align-self: center;
     order: 3;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 
   .filters__title,
@@ -114,8 +109,15 @@
     }
   }
 
+  .filters__btn {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
   .filters__apply {
     margin-bottom: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 }
 
@@ -132,40 +134,44 @@ input[name="side-btn"]:checked + label > svg {
 .filters__list {
   display: none;
   position: relative;
-  padding: 30px 0;
+  margin-bottom: 20px;
+  font-size: 14px;
+
+  &--range {
+    padding: 30px 0;
+  }
+
+  &--checkbox {
+    padding: 10px 0;
+    grid-template-columns: repeat(6, min-content);
+    column-gap: 20px;
+  }
 }
 
-/* Range */
-input[name="side-btn"]:checked + label + .range {
+input[name="side-btn"]:checked + label + .filters__list--range {
   display: block;
 }
 
-/* Checkbox */
-input[name="side-btn"]:checked + label + .checkboxes {
+input[name="side-btn"]:checked + label + .filters__list--checkbox {
   display: grid;
 }
 
-.checkboxes {
-  grid-template-columns: repeat(6, min-content);
-  column-gap: 20px;
-}
-
 @media(min-width: $min-tablet) {
-  .checkboxes {
+  .filters__list--checkbox {
     row-gap: 20px;
 
-    &--color {
+    &.color {
       grid-template-columns: repeat(3, min-content);
     }
 
-    &--collection {
+    &.collection {
       grid-template-columns: repeat(2, min-content);
     }
   }
 }
 
 @media(min-width: $min-desktop) {
-  .checkboxes {
+  .filters__list--checkbox {
     grid-template-columns: repeat(6, min-content);
   }
 }

@@ -58,7 +58,7 @@
     font-size: 32px;
   }
 
-  .collection_btn {
+  .collection__btn {
     margin-left: 0;
   }
 
@@ -69,6 +69,12 @@
 
 @media(min-width: $min-desktop) {
   .collection {
+    grid-template-columns: repeat(2, auto);
     padding: 0 7.1%;
+  }
+
+  .collection__btn {
+    padding-left: 60px;
+    padding-right: 60px;
   }
 }
